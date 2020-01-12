@@ -6,13 +6,72 @@
         xmlns:local="clr-namespace:FunctionalVarietyTracker.Views"
         xmlns:viewModels="clr-namespace:FunctionalVarietyTracker.ViewModels"
         mc:Ignorable="d"
-        Title="Setup" Height="450" Width="800">
+        Title="Setup" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
 
   <Window.DataContext>
-    <viewModels:SetupViewModel/>
+    <viewModels:SetupViewModel />
   </Window.DataContext>
 
   <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="5" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="5" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="5" />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="5" />
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="5" />
+    </Grid.ColumnDefinitions>
+
+    <!--#region Upper Controls -->
+    <Grid Grid.Row="1" Grid.Column="1">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="5" />
+        <ColumnDefinition Width="Auto" />
+      </Grid.ColumnDefinitions>
+
+      <TextBlock Text="File: "
+                 Grid.Column="0"
+                 VerticalAlignment="Center" />
+
+      <ComboBox ItemsSource="{Binding GameCollectionFromFiles.Data}"
+                SelectedItem="{Binding GameCollectionFromFiles.SelectedItem}"
+                Width="120"
+                Grid.Column="1" />
+
+      <Button Content="Open"
+              Width="70"
+              Grid.Column="3" />
+
+    </Grid>
+    <!--#endregion-->
+
+
+    <!--#region Lower Buttons -->
+    <Grid Grid.Row="3" Grid.Column="1">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="10" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+
+      <Button Content="Create new"
+              Command="{Binding CommandCreateNew}"
+              Grid.Column="0"
+              Width="70"
+              HorizontalAlignment="Right" />
+
+      <Button Content="Load"
+              Grid.Column="2"
+              Width="70"
+              HorizontalAlignment="Left" />
+    </Grid>
+    <!--#endregion-->
 
   </Grid>
 
