@@ -1,4 +1,5 @@
 ﻿#region Title Header
+
 // Name: Phillip Smith
 // 
 // Solution: FunctionalVarietyTracker
@@ -10,17 +11,16 @@
 // 
 // Creation Date:
 // -- 
+
 #endregion
 
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using FunctionalVarietyTracker.AutoDependencies;
 
 namespace FunctionalVarietyTracker.Models.GameData
 {
   internal interface IGameDataModel
   {
-    GameCategoryModel GameModel { get; set; }
-    ObservableCollection<LevelModel> LevelModels { get; set; }
+    string GameName { get; set; }
+    SelectableCollectionModel<CategoryModel> Categories { get; set; }
   }
 }

@@ -1,31 +1,28 @@
-﻿using System.Collections.ObjectModel;
-using FunctionalVarietyTracker.AutoDependencies;
-using FunctionalVarietyTracker.Types;
+﻿using FunctionalVarietyTracker.Types;
 
 namespace FunctionalVarietyTracker.Models.GameData
 {
-  [AutoDependency(false)]
   internal class GameDataModel : PropertyChangedBase, IGameDataModel
   {
-    private GameCategoryModel _gameModel;
-    private ObservableCollection<LevelModel> _levelModels;
+    private SelectableCollectionModel<CategoryModel> _categoryModels;
+    private string _gameName;
 
-    public ObservableCollection<LevelModel> LevelModels
+    public string GameName
     {
-      get => _levelModels;
-      set => SetValue(ref _levelModels, value);
+      get => _gameName;
+      set => SetValue(ref _gameName, value);
     }
 
-    public GameCategoryModel GameModel
+    public SelectableCollectionModel<CategoryModel> Categories
     {
-      get => _gameModel;
-      set => SetValue(ref _gameModel, value);
+      get => _categoryModels;
+      set => SetValue(ref _categoryModels, value);
     }
 
-    public GameDataModel(GameCategoryModel gameModel, ObservableCollection<LevelModel> levelModels)
+    public GameDataModel(string gameName = "", SelectableCollectionModel<CategoryModel> categoryModels = null)
     {
-      GameModel = gameModel;
-      LevelModels = levelModels;
+      GameName = gameName;
+      Categories = categoryModels ?? new SelectableCollectionModel<CategoryModel>();
     }
   }
 }
