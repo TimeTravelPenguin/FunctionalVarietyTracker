@@ -120,4 +120,7 @@
   <data name="AutoDependency_NotInitialised" xml:space="preserve">
     <value>AutoDependency is not initialised</value>
   </data>
+  <data name="FilePathNull" xml:space="preserve">
+    <value>The current path is null</value>
+  </data>
 </root>

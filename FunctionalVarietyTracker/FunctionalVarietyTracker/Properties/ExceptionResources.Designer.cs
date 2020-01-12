@@ -68,5 +68,14 @@ namespace FunctionalVarietyTracker.Properties {
                 return ResourceManager.GetString("AutoDependency_NotInitialised", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The current path is null.
+        /// </summary>
+        internal static string FilePathNull {
+            get {
+                return ResourceManager.GetString("FilePathNull", resourceCulture);
+            }
+        }
     }
 }
