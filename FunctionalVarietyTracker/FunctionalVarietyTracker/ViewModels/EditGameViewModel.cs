@@ -1,4 +1,6 @@
-﻿using FunctionalVarietyTracker.Models.GameData;
+﻿using System.Collections.ObjectModel;
+using FunctionalVarietyTracker.Models;
+using FunctionalVarietyTracker.Models.GameData;
 using FunctionalVarietyTracker.Types;
 
 namespace FunctionalVarietyTracker.ViewModels
@@ -15,9 +17,23 @@ namespace FunctionalVarietyTracker.ViewModels
 
     public EditGameViewModel()
     {
-      GameData.Categories.AddItem(new CategoryModel("My category 01"));
-      GameData.Categories.AddItem(new CategoryModel("My category 02"));
-      GameData.Categories.AddItem(new CategoryModel("My category 03"));
+      GameData.Categories.AddItem(new CategoryModel("My category 01")
+      {
+        Levels = new SelectableCollectionModel<LevelModel>
+          {Data = new ObservableCollection<LevelModel> {new LevelModel("Level 01"), new LevelModel("Level 02"), new LevelModel("Level 04")}}
+      });
+
+      GameData.Categories.AddItem(new CategoryModel("My category 02")
+      {
+        Levels = new SelectableCollectionModel<LevelModel>
+          {Data = new ObservableCollection<LevelModel> {new LevelModel("Level 02")}}
+      });
+
+      GameData.Categories.AddItem(new CategoryModel("My category 03")
+      {
+        Levels = new SelectableCollectionModel<LevelModel>
+          {Data = new ObservableCollection<LevelModel> {new LevelModel("Level 03")}}
+      });
     }
   }
 }

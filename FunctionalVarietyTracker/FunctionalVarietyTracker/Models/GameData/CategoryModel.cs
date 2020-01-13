@@ -20,6 +20,10 @@ namespace FunctionalVarietyTracker.Models.GameData
       set => SetValue(ref _levels, value);
     }
 
+    public CategoryModel():this(string.Empty, null)
+    {
+    }
+
     public CategoryModel(string category, SelectableCollectionModel<LevelModel> levels = null)
     {
       Category = category;

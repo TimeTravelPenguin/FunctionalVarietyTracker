@@ -19,6 +19,10 @@ namespace FunctionalVarietyTracker.Models.GameData
       set => SetValue(ref _categoryModels, value);
     }
 
+    public GameDataModel() : this(string.Empty)
+    {
+    }
+
     public GameDataModel(string gameName = "", SelectableCollectionModel<CategoryModel> categoryModels = null)
     {
       GameName = gameName;

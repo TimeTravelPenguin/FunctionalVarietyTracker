@@ -14,6 +14,8 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -79,6 +81,10 @@
     <Compile Include="AutoDependencies\AutoDependency.cs" />
     <Compile Include="AutoDependencies\AutoDependencyAttribute.cs" />
     <Compile Include="AutoDependencies\IAutoDependency.cs" />
+    <Compile Include="Controls\ViewModels\ContentSliderViewModel.cs" />
+    <Compile Include="Controls\Views\ContentSliderView.xaml.cs">
+      <DependentUpon>ContentSliderView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DependencyShell.cs" />
     <Compile Include="ExtensionMethods\StringExtension.cs" />
     <Compile Include="Models\SelectableCollectionModel.cs" />
@@ -137,6 +143,10 @@
     <Resource Include="_Notes\DevNotes.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\Views\ContentSliderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\EditGameView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -146,6 +156,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Controls\Models\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

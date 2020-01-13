@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:FunctionalVarietyTracker.Views"
         xmlns:viewModels="clr-namespace:FunctionalVarietyTracker.ViewModels"
         xmlns:gameData="clr-namespace:FunctionalVarietyTracker.Models.GameData"
+        xmlns:views="clr-namespace:FunctionalVarietyTracker.Controls.Views"
         mc:Ignorable="d"
         Title="EditGameView" Height="450" Width="345"
         SizeToContent="WidthAndHeight">
@@ -108,17 +109,29 @@
     <!--#region Lower Panel -->
     <Grid Row="3" Column="1">
       <TabControl ItemsSource="{Binding GameData.Categories.Data, Mode=OneWay}">
+        <!--#region Tab header -->
         <TabControl.ItemTemplate>
           <DataTemplate DataType="gameData:CategoryModel">
             <TextBlock Text="{Binding Path=Category, Mode=OneWay}" />
           </DataTemplate>
         </TabControl.ItemTemplate>
+        <!--#endregion-->
 
+        <!--#region Tab contents -->
         <TabControl.ContentTemplate>
           <DataTemplate DataType="gameData:CategoryModel">
-            <TextBlock Text="{Binding Path=Category, StringFormat=Category: {0}}" />
+            <DataTemplate.Resources>
+              <Style x:Key="DisplayStyle">
+                
+              </Style>
+            </DataTemplate.Resources>
+
+
+            <views:ContentSliderView Style="{StaticResource DisplayStyle}"/>
+
           </DataTemplate>
         </TabControl.ContentTemplate>
+        <!--#endregion-->
 
       </TabControl>
     </Grid>
