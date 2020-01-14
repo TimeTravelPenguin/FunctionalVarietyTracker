@@ -1,12 +1,21 @@
 ﻿using System.Collections.ObjectModel;
+using FunctionalVarietyTracker.Controls.ViewModels;
 using FunctionalVarietyTracker.Types;
+using JetBrains.Annotations;
 
 namespace FunctionalVarietyTracker.Models.GameData
 {
   internal class CategoryModel : PropertyChangedBase
   {
     private string _category;
-    private SelectableCollectionModel<LevelModel> _levels;
+    private ObservableCollection<LevelModel> _levels;
+    private ContentSliderViewModel _sliderDataContext;
+
+    public ContentSliderViewModel SliderDataContext
+    {
+      get => _sliderDataContext;
+      set => SetValue(ref _sliderDataContext, value);
+    }
 
     public string Category
     {
@@ -14,20 +23,22 @@ namespace FunctionalVarietyTracker.Models.GameData
       set => SetValue(ref _category, value);
     }
 
-    public SelectableCollectionModel<LevelModel> Levels
+    public ObservableCollection<LevelModel> Levels
     {
       get => _levels;
       set => SetValue(ref _levels, value);
     }
 
-    public CategoryModel():this(string.Empty, null)
+    public CategoryModel()
     {
     }
 
-    public CategoryModel(string category, SelectableCollectionModel<LevelModel> levels = null)
+    public CategoryModel(string category, [NotNull] ObservableCollection<LevelModel> levels)
     {
       Category = category;
-      Levels = levels ?? new SelectableCollectionModel<LevelModel>();
+      Levels = levels;
+
+      SliderDataContext = new ContentSliderViewModel(Levels);
     }
   }
 }

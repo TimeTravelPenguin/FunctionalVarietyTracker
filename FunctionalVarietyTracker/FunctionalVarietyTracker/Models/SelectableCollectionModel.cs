@@ -12,7 +12,7 @@ namespace FunctionalVarietyTracker.Models
     public ObservableCollection<T> Data
     {
       get => _data;
-      set
+      private set
       {
         SetValue(ref _data, value);
         OnPropertyChanged(nameof(SelectedItem));

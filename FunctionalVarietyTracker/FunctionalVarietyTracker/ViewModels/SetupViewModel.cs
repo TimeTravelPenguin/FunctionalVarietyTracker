@@ -42,7 +42,7 @@ namespace FunctionalVarietyTracker.ViewModels
     {
       var view = new EditGameView
       {
-        DataContext = new EditGameViewModel()
+        DataContext = new EditGameViewModel(GameDataModel.NewGame())
       };
 
       view.ShowDialog();

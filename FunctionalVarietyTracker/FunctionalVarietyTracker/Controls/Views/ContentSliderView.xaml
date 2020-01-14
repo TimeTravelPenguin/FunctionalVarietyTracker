@@ -4,29 +4,42 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:FunctionalVarietyTracker.Controls.Views"
+             xmlns:viewModels="clr-namespace:FunctionalVarietyTracker.Controls.ViewModels"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:helpers="clr-namespace:FunctionalVarietyTracker.Helpers"
              mc:Ignorable="d"
-             d:DesignHeight="450" d:DesignWidth="800">
-
-  <UserControl.Resources>
-    <ResourceDictionary>
-      <ResourceDictionary x:Key="ItemsControlSource"/>
-      <ResourceDictionary x:Key="ItemsControlResource"/>
-    </ResourceDictionary>
-  </UserControl.Resources>
+             d:DesignHeight="450" d:DesignWidth="800"
+             d:DataContext="{d:DesignInstance viewModels:ContentSliderViewModel}">
 
   <Grid>
     <Grid.RowDefinitions>
       <RowDefinition Height="20" />
-      <RowDefinition Height="Auto" />
+      <RowDefinition MinHeight="300" Height="Auto" />
+      <RowDefinition Height="auto" />
     </Grid.RowDefinitions>
 
-    <Slider Grid.Row="0" />
+    <Slider x:Name="Slider"
+            Grid.Row="0"
+            Value="{Binding SlideValue}"
+            Minimum="0"
+            Maximum="{Binding Levels.Count}"
+            IsSnapToTickEnabled="True"
+            TickFrequency="1" />
 
-    <StackPanel Grid.Row="1">
+    <TextBlock Grid.Row="1" Text="{Binding ElementName=Slider, Path=Value, StringFormat=Value: {0}}" />
 
-      <ItemsControl ItemsSource="{StaticResource ItemsControlSource}"
-                    DataContext="{StaticResource ItemsControlResource}"/>
+    <Grid Grid.Row="1"
+          helpers:GridHelpers.ColumnCount="{Binding Levels.Count}">
 
-    </StackPanel>
+      <ItemsControl ItemsSource="{Binding Levels}"
+                    ItemTemplateSelector="{Binding ItemTemplateSelector}">
+        <ItemsControl.ItemsPanel>
+          <ItemsPanelTemplate >
+            <StackPanel/>
+          </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+      </ItemsControl>
+
+    </Grid>
   </Grid>
 </UserControl>

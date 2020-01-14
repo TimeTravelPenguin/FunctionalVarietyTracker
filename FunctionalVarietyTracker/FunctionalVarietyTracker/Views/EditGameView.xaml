@@ -31,7 +31,6 @@
       <ColumnDefinition Width="5" />
     </Grid.ColumnDefinitions>
 
-
     <!--#region Upper Panel -->
     <GroupBox Header="Basic Metadata"
               Grid.Row="1"
@@ -88,7 +87,7 @@
                 Height="20"
                 VerticalAlignment="Top" />
 
-        <ListView ItemsSource="{Binding GameData.Categories.Data, Mode=OneWay}"
+        <ListView ItemsSource="{Binding GameData.Categories.Data}"
                   SelectedItem="{Binding GameData.Categories.SelectedItem}"
                   Grid.Row="5"
                   Grid.RowSpan="2"
@@ -108,10 +107,10 @@
 
     <!--#region Lower Panel -->
     <Grid Row="3" Column="1">
-      <TabControl ItemsSource="{Binding GameData.Categories.Data, Mode=OneWay}">
+      <TabControl ItemsSource="{Binding GameData.Categories.Data}">
         <!--#region Tab header -->
         <TabControl.ItemTemplate>
-          <DataTemplate DataType="gameData:CategoryModel">
+          <DataTemplate>
             <TextBlock Text="{Binding Path=Category, Mode=OneWay}" />
           </DataTemplate>
         </TabControl.ItemTemplate>
@@ -119,16 +118,8 @@
 
         <!--#region Tab contents -->
         <TabControl.ContentTemplate>
-          <DataTemplate DataType="gameData:CategoryModel">
-            <DataTemplate.Resources>
-              <Style x:Key="DisplayStyle">
-                
-              </Style>
-            </DataTemplate.Resources>
-
-
-            <views:ContentSliderView Style="{StaticResource DisplayStyle}"/>
-
+          <DataTemplate>
+            <views:ContentSliderView DataContext="{Binding SliderDataContext}" />
           </DataTemplate>
         </TabControl.ContentTemplate>
         <!--#endregion-->

@@ -1,4 +1,5 @@
-﻿using FunctionalVarietyTracker.Types;
+﻿using System.Collections.ObjectModel;
+using FunctionalVarietyTracker.Types;
 
 namespace FunctionalVarietyTracker.Models.GameData
 {
@@ -19,14 +20,27 @@ namespace FunctionalVarietyTracker.Models.GameData
       set => SetValue(ref _categoryModels, value);
     }
 
-    public GameDataModel() : this(string.Empty)
+    public GameDataModel() : this("", null)
     {
     }
 
-    public GameDataModel(string gameName = "", SelectableCollectionModel<CategoryModel> categoryModels = null)
+    public GameDataModel(string gameName, SelectableCollectionModel<CategoryModel> categoryModels)
     {
       GameName = gameName;
       Categories = categoryModels ?? new SelectableCollectionModel<CategoryModel>();
+    }
+
+    public static GameDataModel NewGame()
+    {
+      return new GameDataModel("<Game Name>", new SelectableCollectionModel<CategoryModel>(
+        new ObservableCollection<CategoryModel>
+        {
+          new CategoryModel("<Category 01>",
+            new ObservableCollection<LevelModel>
+            {
+              new LevelModel("<Level 01>", new ObservableCollection<CollectableModel>())
+            })
+        }));
     }
   }
 }

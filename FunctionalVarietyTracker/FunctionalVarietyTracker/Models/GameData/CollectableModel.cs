@@ -27,7 +27,7 @@ namespace FunctionalVarietyTracker.Models.GameData
       set => SetValue(ref _image, value);
     }
 
-    public CollectableModel(string name, bool isCollected, Image image = null)
+    public CollectableModel(string name, bool isCollected = false, Image image = null)
     {
       _name = name;
       _isCollected = isCollected;

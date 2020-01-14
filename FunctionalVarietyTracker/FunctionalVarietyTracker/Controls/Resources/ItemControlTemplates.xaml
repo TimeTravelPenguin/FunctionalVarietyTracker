@@ -1,0 +1,24 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:gameData="clr-namespace:FunctionalVarietyTracker.Models.GameData">
+
+  <DataTemplate x:Key="EditCategory" DataType="{x:Type gameData:LevelModel}">
+    <Border Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
+            BorderBrush="Black"
+            BorderThickness="1"
+            Height="50"
+            Width="100">
+
+      <TextBlock Text="{Binding LevelName}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+    </Border>
+  </DataTemplate>
+
+
+  <DataTemplate x:Key="TrackCategory">
+    <Border Height="50">
+      <TextBlock Text="Track Mode" VerticalAlignment="Center" HorizontalAlignment="Center" />
+    </Border>
+  </DataTemplate>
+
+</ResourceDictionary>

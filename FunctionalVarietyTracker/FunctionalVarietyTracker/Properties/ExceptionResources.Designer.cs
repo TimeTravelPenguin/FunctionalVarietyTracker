@@ -70,6 +70,24 @@ namespace FunctionalVarietyTracker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Key is already registered.
+        /// </summary>
+        internal static string Factory_KeyAlreadyRegistered {
+            get {
+                return ResourceManager.GetString("Factory_KeyAlreadyRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The given key does not exist.
+        /// </summary>
+        internal static string Factory_KeyNotExist {
+            get {
+                return ResourceManager.GetString("Factory_KeyNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The current path is null.
         /// </summary>
         internal static string FilePathNull {

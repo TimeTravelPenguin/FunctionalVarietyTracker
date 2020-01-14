@@ -123,4 +123,10 @@
   <data name="FilePathNull" xml:space="preserve">
     <value>The current path is null</value>
   </data>
+  <data name="Factory_KeyAlreadyRegistered" xml:space="preserve">
+    <value>Key is already registered</value>
+  </data>
+  <data name="Factory_KeyNotExist" xml:space="preserve">
+    <value>The given key does not exist</value>
+  </data>
 </root>
